@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text, TextInput, Button, FlatList, StyleSheet } fro
 import Constants from 'expo-constants';
 import axios from 'axios';
 
-const API = axios.create({ baseURL: process.env.API_BASE_URL || 'http://10.0.2.2:4000' });
+const API = axios.create({ baseURL: process.env.API_BASE_URL || 'https://jarvis-assistant-unified-5.onrender.com' });
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
