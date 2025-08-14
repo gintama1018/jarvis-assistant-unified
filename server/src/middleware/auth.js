@@ -19,14 +19,19 @@ if (!config.demoMode && config.firebase.projectId && config.firebase.clientEmail
 }
 
 export const authMiddleware = async (req, res, next) => {
+  // Debug logging for production
+  console.log('Auth middleware - Demo Mode:', config.demoMode);
+  console.log('Auth middleware - DEMO_MODE env:', process.env.DEMO_MODE);
+  
   if (config.demoMode) {
     // demo user
     req.user = { uid: 'demo-user', email: 'demo@example.com' };
     return next();
   }
+  
   const auth = req.headers.authorization || '';
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
-  if (!token) return res.status(401).json({ error: 'Missing auth token' });
+  if (!token) return res.status(401).json({ error: 'Missing auth token', demoMode: config.demoMode });
   if (!firebaseReady) return res.status(500).json({ error: 'Auth not configured' });
   try {
     const decoded = await admin.auth().verifyIdToken(token);
