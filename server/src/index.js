@@ -1,3 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Debug environment variables for production
+console.log('Environment Debug:');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'SET' : 'NOT SET');
+console.log('DEMO_MODE:', process.env.DEMO_MODE);
+console.log('PORT:', process.env.PORT);
+
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
