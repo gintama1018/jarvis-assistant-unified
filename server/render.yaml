@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: jarvis-server
+    env: node
+    rootDir: server
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: PORT
+        value: 4000
