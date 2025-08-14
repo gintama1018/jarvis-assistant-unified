@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+// Production-ready configuration with fallbacks
 export const config = {
-  port: process.env.PORT || 4000,
+  port: parseInt(process.env.PORT || '4000', 10),
   mongoUri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/jarvis',
   corsOrigin: process.env.CORS_ORIGIN || '*',
-  demoMode: (process.env.DEMO_MODE || 'false').toLowerCase() === 'true',
+  demoMode: (process.env.DEMO_MODE || 'true').toLowerCase() === 'true', // Default to true for easier deployment
   firebase: {
     projectId: process.env.FIREBASE_PROJECT_ID,
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,

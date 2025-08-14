@@ -40,11 +40,13 @@ app.use(helmet());
 app.use(express.json({ limit: '2mb' }));
 app.use(morgan('dev'));
 
-// DB
+// DB with better error handling
+console.log('Attempting MongoDB connection to:', config.mongoUri.includes('mongodb+srv') ? 'MongoDB Atlas' : 'Local MongoDB');
 mongoose.connect(config.mongoUri).then(() => {
-  console.log('MongoDB connected');
+  console.log('✅ MongoDB connected successfully');
 }).catch(err => {
-  console.error('MongoDB error', err);
+  console.error('❌ MongoDB connection failed:', err.message);
+  console.error('Check MONGODB_URI environment variable');
   process.exit(1);
 });
 
@@ -77,5 +79,8 @@ io.on('connection', (socket) => {
 initMqtt(app).catch(err => console.warn('MQTT init failed:', err.message));
 
 server.listen(config.port, () => {
-  console.log(`API running on http://localhost:${config.port}`);
+  console.log(`🚀 Jarvis Student Assistant API running on port ${config.port}`);
+  console.log(`📱 Demo Mode: ${config.demoMode ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`🌐 CORS Origin: ${config.corsOrigin}`);
+  console.log(`✅ Server ready for requests!`);
 });
