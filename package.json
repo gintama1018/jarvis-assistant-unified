@@ -1,0 +1,22 @@
+{
+  "name": "jarvis-assistant-unified",
+  "version": "1.0.0",
+  "description": "Jarvis Student Assistant - Full Stack Application",
+  "main": "server/src/index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "build": "cd server && npm install",
+    "dev": "cd server && npm run dev",
+    "install-all": "cd server && npm install && cd ../apps/web && npm install && cd ../apps/mobile && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gintama1018/jarvis-assistant-unified.git"
+  },
+  "keywords": ["student", "assistant", "ai", "nodejs", "react", "react-native"],
+  "author": "Jarvis Assistant Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

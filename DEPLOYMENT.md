@@ -10,9 +10,9 @@
 ### 2. Render Service Configuration
 
 **Service Settings:**
-- **Build Command**: `npm install`
+- **Build Command**: `npm run build`
 - **Start Command**: `npm start`
-- **Root Directory**: `server`
+- **Root Directory**: `` (leave empty - use project root)
 - **Environment**: Node.js
 
 **Required Environment Variables:**
